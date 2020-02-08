@@ -12,9 +12,7 @@
   <img src="./assets/logo.png" class="logo">
 </div>
 
-<Body :posts="posts"/>
-
-<div class="sample-box">임시 박스</div>
+<Body :posts="posts" :step="step" />
 
 <div class="footer">
   <ul class="footer-button-plus">
@@ -33,6 +31,7 @@ import Postdata from './assets/postdata.js'
 export default {
   data(){ 
     return {
+      step: 2,
       posts: Postdata,
     }
   },
