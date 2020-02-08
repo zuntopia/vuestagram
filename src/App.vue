@@ -1,17 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="header">
+  <ul class="header-button-left">
+    <li>Cancel</li>
+  </ul>
+
+  <ul class="header-button-right">
+    <li>Next</li> 
+  </ul>
+
+  <img src="./assets/logo.png" class="logo">
+</div>
+
+<Body />
+
+<div class="sample-box">임시 박스</div>
+
+<div class="footer">
+  <ul class="footer-button-plus">
+    <li>+</li>
+  </ul>
+</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Body from './components/Body.vue'
+// import Post from './components/Post.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
+    Body,
+    // Post,
   }
 }
 </script>
@@ -24,5 +47,85 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+body {
+margin: 0;
+}
+ul{
+padding: 5px;
+list-style-type: none;
+}
+.logo {
+width:22px;
+margin: auto;
+display: block;
+position: absolute;
+left: 0;
+right: 0;
+top: 13px;
+}
+.header {
+width: 100%;
+height: 40px;
+background-color: white;
+padding-bottom: 8px;
+position: sticky;
+top: 0;
+}
+.header-button-left {
+color: skyblue;
+float: left;
+width: 50px;
+padding-left: 20px;
+cursor: pointer;
+margin-top: 10px;
+}
+.header-button-right {
+color: skyblue;
+float: right;
+width: 50px;
+cursor: pointer;
+margin-top: 10px;
+}
+
+body {
+margin: 0;
+}
+ul{
+padding: 5px;
+list-style-type: none;
+}
+.logo {
+width:22px;
+margin: auto;
+display: block;
+position: absolute;
+left: 0;
+right: 0;
+top: 13px;
+}
+.header {
+width: 100%;
+height: 40px;
+background-color: white;
+padding-bottom: 8px;
+position: sticky;
+top: 0;
+}
+.header-button-left {
+color: skyblue;
+float: left;
+width: 50px;
+padding-left: 20px;
+cursor: pointer;
+margin-top: 10px;
+}
+.header-button-right {
+color: skyblue;
+float: right;
+width: 50px;
+cursor: pointer;
+margin-top: 10px;
 }
 </style>
