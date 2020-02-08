@@ -1,18 +1,22 @@
 <template>
   <div id="app">
 <div class="header">
-  <ul class="header-button-left">
+  <ul class="header-button-left" v-if="step == 1">
     <li>Cancel</li>
   </ul>
 
-  <ul class="header-button-right">
+  <ul class="header-button-right" v-on:click="step=2" v-if="step == 1">
     <li>Next</li> 
+  </ul>
+
+  <ul class="header-button-right" v-on:click="publish" v-if="step == 2">
+    <li>Publish</li> 
   </ul>
 
   <img src="./assets/logo.png" class="logo">
 </div>
 
-<Body :posts="posts" :step="step" :imgdataurl="imgdataurl" />
+<Body :posts="posts" :step="step" :imgdataurl="imgdataurl" v-on:content='content=$event'/>
 
 <div class="footer">
   <ul class="footer-button-plus">
@@ -33,6 +37,7 @@ export default {
       step: 0,
       posts: Postdata,
       imgdataurl: "",
+      content: "",
     }
   },
   name: 'App',
@@ -52,6 +57,21 @@ export default {
         this.imgdataurl = e.target.result;
         console.log(e.target.result)
       }
+    },
+    publish(){
+
+      let newitem = {
+        name: "HJWORKS",
+        userImage: "https://placeimg.com/200/200/arch",
+        postImage: this.imgdataurl,
+        likes: 20,
+        date: 'Apr 20',
+        liked: false,
+        caption: this.content,
+        filter: "clarendon"
+      }
+      this.posts.unshift(newitem);
+      this.step=0;
     }
   }
 }

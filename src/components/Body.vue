@@ -16,9 +16,10 @@
   </div>
 
   <div v-if="step == 2"> 
-    <div class="upload-image"></div>
-    <textarea class="write-box">write!</textarea>
+    <div class="upload-image" :style=" `background-image:url(${imgdataurl})`"></div>
+    <textarea v-on:input="$emit('content', $event.target.value)" class="write-box">write!</textarea>
   </div>
+  <!-- <button v-on:click="$emit('send', 'sendsendsnedsendnsend')">button</button> -->
 </div>
 </template>
 
