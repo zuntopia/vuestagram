@@ -1,15 +1,15 @@
 <template>
 <div class="post">
   <div class="post-header">
-    <div class="profile"></div>
+    <div class="profile" :style=" 'background-image:url('+ post.userImage + ')'"/>
     <span class="profile-name">{{post.name}}</span>
   </div>
 
-  <div class="post-body"></div>
+  <div class="post-body" :style=" 'background-image:url('+ post.postImage + ')'"></div>
 
   <div class="post-content">
     <p>LIKES: {{post.likes}}</p>
-    <p><strong>글쓴이아이디</strong> 임시내용이에요😫</p>
+    <p><strong>{{post.name}}</strong>{{post.caption}}</p>
     <p class="date">May 15</p>
   </div>
 </div>
