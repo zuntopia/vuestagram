@@ -12,7 +12,7 @@
   <img src="./assets/logo.png" class="logo">
 </div>
 
-<Body />
+<Body :posts="posts"/>
 
 <div class="sample-box">임시 박스</div>
 
@@ -28,8 +28,14 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import Body from './components/Body.vue'
 // import Post from './components/Post.vue'
+import Postdata from './assets/postdata.js'
 
 export default {
+  data(){ 
+    return {
+      posts: Postdata,
+    }
+  },
   name: 'App',
   components: {
     // HelloWorld

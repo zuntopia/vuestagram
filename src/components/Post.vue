@@ -2,13 +2,13 @@
 <div class="post">
   <div class="post-header">
     <div class="profile"></div>
-    <span class="profile-name">ChanKim</span>
+    <span class="profile-name">{{post.name}}</span>
   </div>
 
   <div class="post-body"></div>
 
   <div class="post-content">
-    <p>43 Likes</p>
+    <p>LIKES: {{post.likes}}</p>
     <p><strong>글쓴이아이디</strong> 임시내용이에요😫</p>
     <p class="date">May 15</p>
   </div>
@@ -17,6 +17,10 @@
 
 <script>
 export default {
+    name: 'post',
+    props: {
+        post: Object,
+    }
 
 }
 </script>
