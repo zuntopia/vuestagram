@@ -12,27 +12,27 @@
   <img src="./assets/logo.png" class="logo">
 </div>
 
-<Body :posts="posts" :step="step" />
+<Body :posts="posts" :step="step" :imgdataurl="imgdataurl" />
 
 <div class="footer">
   <ul class="footer-button-plus">
-    <li>+</li>
+    <input v-on:change="upload" type="file" id="file" class="inputfile" >
+    <label for="file" class="input-plus">+</label>
   </ul>
 </div>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Body from './components/Body.vue'
-// import Post from './components/Post.vue'
 import Postdata from './assets/postdata.js'
 
 export default {
   data(){ 
     return {
-      step: 2,
+      step: 0,
       posts: Postdata,
+      imgdataurl: "",
     }
   },
   name: 'App',
@@ -40,6 +40,19 @@ export default {
     // HelloWorld
     Body,
     // Post,
+  },
+  methods: {
+     upload(e){
+      this.step = 1;
+      let file = e.target.files;
+      let reader = new FileReader();
+      reader.readAsDataURL(file[0]);
+      // this.imgdataurl = e.target.result;
+      reader.onload = e => {
+        this.imgdataurl = e.target.result;
+        console.log(e.target.result)
+      }
+    }
   }
 }
 </script>

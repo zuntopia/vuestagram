@@ -5,7 +5,7 @@
   </div>
 
   <div v-if="step == 1"> 
-    <div class="upload-image"></div>
+    <div class="upload-image" :style=" `background-image:url(${imgdataurl})`"></div>
     <div class="filters">
       <div class="filter-1"></div>
       <div class="filter-1"></div>
@@ -17,15 +17,12 @@
 
   <div v-if="step == 2"> 
     <div class="upload-image"></div>
-    <div v-if="step == 3" class="write">
-      <textarea class="write-box">write!</textarea>
-    </div>
+    <textarea class="write-box">write!</textarea>
   </div>
 </div>
 </template>
 
 <script>
-// import Data from '../assets/postdata.js'
 import Post from './Post.vue'
 
 export default {
@@ -36,8 +33,8 @@ export default {
     props: {
         step: Number,
         posts: Array,
+        imgdataurl: String,
         }
-        
 }
 </script>
 
