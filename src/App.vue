@@ -16,7 +16,7 @@
   <img src="./assets/logo.png" class="logo">
 </div>
 
-<Body :posts="posts" :step="step" :imgdataurl="imgdataurl" v-on:content='content=$event'/>
+<Body :filters="filters" :posts="posts" :step="step" :imgdataurl="imgdataurl" v-on:content='content=$event'/>
 
 <div class="footer">
   <ul class="footer-button-plus">
@@ -38,6 +38,8 @@ export default {
       posts: Postdata,
       imgdataurl: "",
       content: "",
+      filters: [ "normal", "clarendon", "gingham", "moon", "lark", "reyes", "juno", "slumber", "aden", "perpetua", "mayfair", "rise", "hudson", "valencia", "xpro2", "willow", "lofi", "inkwell", "nashville"],
+    
     }
   },
   name: 'App',
