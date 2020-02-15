@@ -1,13 +1,24 @@
 <template>
-    <div :class="`filter-item  ${filter}`" :style=" `background-image:url(${imgdataurl})`"></div>
+    <div @click="filterClick" :class="`filter-item  ${filter}`" :style=" `background-image:url(${imgdataurl})`">
+        <!-- <p>{{filter}}</p> -->
+        <slot></slot>
+    </div>
 </template>
 
 <script>
+import EventBus from "./../EventBus.js"
+
 export default {
     props: {
         imgdataurl: String,
         filter: String,
+        },
+    methods: {
+        filterClick(){
+            EventBus.$emit("selected_filter", this.filter);
         }
+    }
+
 }
 </script>
 

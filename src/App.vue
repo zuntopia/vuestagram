@@ -30,6 +30,7 @@
 <script>
 import Body from './components/Body.vue'
 import Postdata from './assets/postdata.js'
+import EventBus from './EventBus.js'
 
 export default {
   data(){ 
@@ -47,6 +48,12 @@ export default {
     // HelloWorld
     Body,
     // Post,
+  },
+  mounted(){
+    EventBus.$on('selected_filter', (myEvent) => {
+      /* eslint-disable */
+      console.log(myEvent);
+    })
   },
   methods: {
      upload(e){

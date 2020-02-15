@@ -5,9 +5,16 @@
   </div>
 
   <div v-if="step == 1"> 
-    <div class="upload-image" :style=" `background-image:url(${imgdataurl})`"></div>
+    <div :class="`upload-image ${clicked_filter}`" :style=" `background-image:url(${imgdataurl})`"></div>
     <div class="filters">
-      <FilterBox v-for="filter in filters" :key="filter" :filter="filter" :imgdataurl="imgdataurl" />
+      <FilterBox 
+        v-for="filter in filters" 
+        :key="filter" 
+        :filter="filter" 
+        :imgdataurl="imgdataurl" 
+        v-on:clicked_filter='clicked_filter=clicked_filter'>
+        <p>{{filter}}</p>
+      </FilterBox>
     </div>
   </div>
 
@@ -22,8 +29,20 @@
 <script>
 import Post from './Post.vue'
 import FilterBox from './FiltorBox.vue'
+import EventBus from './../EventBus.js'
 
 export default {
+  data(){ 
+    return {
+      clicked_filter: "",
+      }
+    },
+  mounted(){
+    EventBus.$on('selected_filter', (myEvent) => {
+      /* eslint-disable */
+      this.clicked_filter=myEvent;
+    })
+  },
     name: 'body',
     components: {
         Post,
