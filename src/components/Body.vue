@@ -1,7 +1,7 @@
 <template>
 <div class="body">
   <div v-if="step == 0">
-  <Post v-for="post in posts" :key="post" :post="post"/>
+  <Post v-for="(post, i) in posts" :key="i" :post="posts[i]"/>
   </div>
 
   <div v-if="step == 1"> 
@@ -19,7 +19,7 @@
   </div>
 
   <div v-if="step == 2"> 
-    <div class="upload-image" :style=" `background-image:url(${imgdataurl})`"></div>
+    <div :class="`upload-image ${clicked_filter}`" :style=" `background-image:url(${imgdataurl})`"></div>
     <textarea v-on:input="$emit('content', $event.target.value)" class="write-box">write!</textarea>
   </div>
   <!-- <button v-on:click="$emit('send', 'sendsendsnedsendnsend')">button</button> -->

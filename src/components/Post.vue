@@ -20,7 +20,7 @@ export default {
     name: 'post',
     props: {
         post: Object,
-    }
+    },
 
 }
 </script>

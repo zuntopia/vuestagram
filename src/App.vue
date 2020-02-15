@@ -17,7 +17,7 @@
 </div>
 
 <Body :filters="filters" :posts="posts" :step="step" :imgdataurl="imgdataurl" v-on:content='content=$event'/>
-
+<button @click="readmore">더보기</button>
 <div class="footer">
   <ul class="footer-button-plus">
     <input v-on:change="upload" type="file" id="file" class="inputfile" >
@@ -28,9 +28,10 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Body from './components/Body.vue'
 import Postdata from './assets/postdata.js'
-import EventBus from './EventBus.js'
+// import EventBus from './EventBus.js'
 
 export default {
   data(){ 
@@ -50,10 +51,10 @@ export default {
     // Post,
   },
   mounted(){
-    EventBus.$on('selected_filter', (myEvent) => {
-      /* eslint-disable */
-      console.log(myEvent);
-    })
+    // EventBus.$on('selected_filter', (myEvent) => {
+    //   /* eslint-disable */
+    //   console.log(myEvent);
+    // })
   },
   methods: {
      upload(e){
@@ -81,6 +82,13 @@ export default {
       }
       this.posts.unshift(newitem);
       this.step=0;
+    },
+    readmore(){
+      axios.get('https://yogoho210.github.io/postdata2.json').then((a) => {
+      this.posts.push(a.data)
+    })
+      // this.posts.unshift(axios.get('https://yogoho210.github.io/postdata2.json').data);
+      // axios.get('https://yogoho210.github.io/postdata2.json').then((a)=> {console.log(a)});
     }
   }
 }
